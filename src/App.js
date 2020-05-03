@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import Header from "./Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Home";
+
+import { Switch, Route } from "react-router-dom";
+import VideoPlayer from "./Videoplayer";
+import Search from "./Search";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/videoplayer/:id" component={VideoPlayer} />
+        <Route exact path="/search" component={Search} />
+        <Route path="/videoplayer/search" component={Search} />
+        
+      </Switch>
     </div>
   );
 }
